@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registration Form</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+	<div class="messages">
+		{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+				<ul>
+				{% for category, message in messages %}
+					<li class="{{ category }}">{{ message }}</li>
+				{% endfor %}
+				</ul>
+			{% endif %}
+		{% endwith %}
+	</div>
+	<div class="container">
+		<h2>Registration</h2>
+		<form action="/register" method="post">
+			<label>
+				First Name: <input type="text" name="first_name" value="{{ session['first_name'] }}">
+			</label>
+
+			<label>
+				Last Name: <input type="text" name="last_name" value="{{ session['last_name'] }}">
+			</label>
+
+			<label>
+				Email: <input type="text" name="email" value="{{ session['email'] }}">
+			</label>
+
+			<label>
+				Password: <input type="password" name="password">
+			</label>
+
+			<label>
+				Confirm Password: <input type="password" name="confirm_password">
+			</label>
+
+			
+
+			<input type="submit" value="Submit" class="button">
+		</form>
+	</div>
+
+
+</body>
+</html>
